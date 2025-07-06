@@ -1,0 +1,361 @@
+{
+	"info": {
+		"_postman_id": "93f50439-9214-49ff-8901-60d4c4221f29",
+		"name": "TestProject",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38919253"
+	},
+	"item": [
+		{
+			"name": "register API",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"usama85@gmail.com\",\r\n  \"name\": \"usama\",\r\n  \"password\": \"Bokiee@12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7261/api/auth/register",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7261",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "register",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"usama8@gmail.com\",\r\n  \"name\": \"usama\",\r\n  \"password\": \"Bokiee@12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7261/api/auth/register",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7261",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Jul 2025 09:31:02 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"response\": \"Email already registered\"\n}"
+				},
+				{
+					"name": "sa",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"usama8@gmail.com\",\r\n  \"name\": \"usama\",\r\n  \"password\": \"Bokiee@12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7009/api/auth/register",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7009",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Jul 2025 23:17:51 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"response\": \"Email already registered\"\n}"
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"usama8@gmail.com\",\r\n  \"password\": \"Bokiee@12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7009/api/auth/login",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7009",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"usama8@gmail.com\",\r\n  \"password\": \"Bokiee@12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7261/api/auth/login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7261",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Jul 2025 09:45:33 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"result\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiY2I3YmZmMS1kNTQ0LTQzYWUtYmQ1Ni01ODE5MTc3MzU4MzIiLCJlbWFpbCI6InVzYW1hOEBnbWFpbC5jb20iLCJuYW1lIjoidXNhbWEiLCJqdGkiOiJmN2M3ZWQwOC0xZjMwLTQ3Y2EtOGZkMC1iYzM0MmRlZDc0OWIiLCJuYmYiOjE3NTE3OTUxMjgsImV4cCI6MTc1MTc5ODcyOCwiaWF0IjoxNzUxNzk1MTI4LCJpc3MiOiJBdXRoQXBpIiwiYXVkIjoiVXNlckFwaSJ9.yPTvi4bpznjRRvpfPHkj40jOdy-v_LT2tvYo2kCSNhI\",\n        \"message\": \"Login successful\"\n    },\n    \"id\": 196,\n    \"exception\": null,\n    \"status\": 5,\n    \"isCanceled\": false,\n    \"isCompleted\": true,\n    \"isCompletedSuccessfully\": true,\n    \"creationOptions\": 0,\n    \"asyncState\": null,\n    \"isFaulted\": false\n}"
+				}
+			]
+		},
+		{
+			"name": "GetProfileDetails",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7009/api/user/GetProfile",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7009",
+					"path": [
+						"api",
+						"user",
+						"GetProfile"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7217/api/UserApi/Getprofile",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7217",
+							"path": [
+								"api",
+								"UserApi",
+								"Getprofile"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Jul 2025 10:07:40 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"name\": \"usama\",\n    \"email\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Name",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Hassan\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7009/api/user/UpdateProfile",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7009",
+					"path": [
+						"api",
+						"user",
+						"UpdateProfile"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiY2I3YmZmMS1kNTQ0LTQzYWUtYmQ1Ni01ODE5MTc3MzU4MzIiLCJlbWFpbCI6InVzYW1hOEBnbWFpbC5jb20iLCJuYW1lIjoidXNhbWEiLCJqdGkiOiJkZDM2ZjdiOC1lZGZiLTRiZmYtYWI3YS1kMzZjNjU0NjM3MjkiLCJuYmYiOjE3NTE4NDQ2NDMsImV4cCI6MTc1MTg0ODI0MywiaWF0IjoxNzUxODQ0NjQzLCJpc3MiOiJBdXRoQXBpIiwiYXVkIjoiVXNlckFwaSJ9.OcbsOKyHQRjn-uLdmOV5JrVpqys6pXezyNY3goD9WbI",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
