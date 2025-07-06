@@ -34,7 +34,7 @@ namespace UserAuthApi.Controllers
         public IActionResult Login([FromBody] LoginRequest request)
         {
             var result = _mediatr.Send(request);
-            return Ok();
+            return Ok(result);
         }
 
     }
