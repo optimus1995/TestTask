@@ -10,7 +10,7 @@ using UserDomain;
 
 namespace UserApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/user")]
     [ApiController]
     public class UserApiController : ControllerBase
     {
