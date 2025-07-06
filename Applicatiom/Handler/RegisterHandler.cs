@@ -18,7 +18,7 @@ public class RegisterHandler : IRequestHandler<RegisterRequest, RegisterResponse
     public async Task<RegisterResponse> Handle(RegisterRequest request, CancellationToken cancellationToken)
     {
         var existing = await _repo.GetByEmailAsync(request.Email);
-        if (existing != null)
+        if (existing>0)
 
             return new RegisterResponse
             {

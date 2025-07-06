@@ -31,10 +31,10 @@ namespace UserAuthApi.Controllers
             }
 
         [HttpPost("login")]
-        public IActionResult Login([FromBody] object request)
+        public IActionResult Login([FromBody] LoginRequest request)
         {
-        
-            return Ok("Login endpoint");
+            var result = _mediatr.Send(request);
+            return Ok();
         }
 
     }

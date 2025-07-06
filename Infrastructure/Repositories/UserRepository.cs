@@ -40,6 +40,22 @@ namespace Infrastructure.Repositories
                 throw; // Re-throw to preserve stack trace
             }
         }
+
+
+        public async Task<User> GetLoginAsync(string email)
+        {
+            try
+            {
+                return await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
+            }
+            catch (Exception ex)
+            {
+                // Log the actual database error
+                Console.WriteLine($"Database error in GetByEmailAsync: {ex.ToString()}");
+                
+                throw; // Re-throw to preserve stack trace
+            }
+        }
         public async Task AddAsync(User user)
         {
             await _context.Users.AddAsync(user);
