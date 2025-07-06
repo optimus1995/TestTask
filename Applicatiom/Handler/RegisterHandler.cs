@@ -4,7 +4,7 @@ using MediatR;
 using Microsoft.AspNetCore.Identity;
 using UserDomain.Entities;
 using UserDomain.Interface;
-public class RegisterHandler : IRequestHandler<RegisterRequest, RegisterResponse>
+public class RegisterHandler : IRequestHandler<RegisterRequest, UpdateUserDetailResponse>
 {
     private readonly IUserRepository _repo;
     private readonly IPasswordHasher<User> _hasher;
@@ -15,12 +15,12 @@ public class RegisterHandler : IRequestHandler<RegisterRequest, RegisterResponse
         _hasher = hasher;
     }
 
-    public async Task<RegisterResponse> Handle(RegisterRequest request, CancellationToken cancellationToken)
+    public async Task<UpdateUserDetailResponse> Handle(RegisterRequest request, CancellationToken cancellationToken)
     {
         var existing = await _repo.GetByEmailAsync(request.Email);
         if (existing>0)
 
-            return new RegisterResponse
+            return new UpdateUserDetailResponse
             {
                 response = "Email already registered"
             };
@@ -34,7 +34,7 @@ public class RegisterHandler : IRequestHandler<RegisterRequest, RegisterResponse
         user.PasswordHash = _hasher.HashPassword(user, request.Password);
 
         await _repo.AddAsync(user);
-        return new RegisterResponse
+        return new UpdateUserDetailResponse
         {
             response = "User registered successfully"
         };

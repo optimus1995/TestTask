@@ -30,13 +30,13 @@ namespace Infrastructure.Repositories
 
 
                 var response = await _context.Users.CountAsync(x => x.Email == email);
-                                       return response;
+                return response;
             }
             catch (Exception ex)
             {
                 // Log the actual database error
                 Console.WriteLine($"Database error in GetByEmailAsync: {ex.ToString()}");
-               
+
                 throw; // Re-throw to preserve stack trace
             }
         }
@@ -50,16 +50,41 @@ namespace Infrastructure.Repositories
             }
             catch (Exception ex)
             {
-                // Log the actual database error
                 Console.WriteLine($"Database error in GetByEmailAsync: {ex.ToString()}");
-                
-                throw; // Re-throw to preserve stack trace
+
+                throw ex;
             }
         }
         public async Task AddAsync(User user)
         {
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
+        }
+        public async Task<int> UpdateDetailsAsync(User user)
+        {
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user), "User cannot be null");
+            }
+
+            try
+            {
+                var dbUser = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
+                dbUser.Name = user.Name;
+                dbUser.Email = user.Email;
+                _context.Update(dbUser);
+                return await _context.SaveChangesAsync();
+          
+            }
+          
+            catch (DbUpdateException ex)
+            {
+                throw new InvalidOperationException("Failed to update user details in database", ex);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An unexpected error occurred while updating user details", ex);
+            }
         }
     }
 }
