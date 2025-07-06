@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Text;
+using UserApi.Middleware;
 using UserDomain.Entities;
 using UserDomain.Interface;
 
@@ -51,7 +52,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseMiddleware<ExceptionMiddlware>();
 app.UseAuthentication();
 app.UseAuthorization();
 

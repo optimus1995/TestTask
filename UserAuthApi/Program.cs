@@ -8,6 +8,7 @@ using UserDomain.Interface;
 using Microsoft.AspNetCore.Authentication.JwtBearer; // Add this using directive
 using Microsoft.IdentityModel.Tokens; // Add this using directive
 using System.Text;
+using UserAuthApi.Middleware;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -53,6 +54,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseMiddleware<ExceptionMiddlware>();
 
 app.UseAuthentication(); 
 app.UseAuthorization();
