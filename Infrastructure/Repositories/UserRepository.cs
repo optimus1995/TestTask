@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-
+using UserDomain;
 using UserDomain.Entities;
 using UserDomain.Interface;
 
@@ -50,9 +50,7 @@ namespace Infrastructure.Repositories
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Database error in GetByEmailAsync: {ex.ToString()}");
-
-                throw ex;
+                throw new DatabaseUnavailableException("DataBase not connected");
             }
         }
         public async Task AddAsync(User user)
@@ -64,12 +62,14 @@ namespace Infrastructure.Repositories
         {
             if (user == null)
             {
-                throw new ArgumentNullException(nameof(user), "User cannot be null");
+                throw new BadRequestException("Bad Request");
             }
 
             try
             {
                 var dbUser = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
+                if (dbUser is null)
+                    throw new NotFoundException("Record Not existed");
                 dbUser.Name = user.Name;
                 dbUser.Email = user.Email;
                 _context.Update(dbUser);
@@ -79,11 +79,11 @@ namespace Infrastructure.Repositories
           
             catch (DbUpdateException ex)
             {
-                throw new InvalidOperationException("Failed to update user details in database", ex);
+                throw new InternalServerException("Something wrong at backend side");
             }
             catch (Exception ex)
             {
-                throw new Exception("An unexpected error occurred while updating user details", ex);
+                throw new BadRequestException("Something Wrong");
             }
         }
     }

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using UserDomain;
 
 namespace UserApi.Controllers
 {
@@ -23,10 +24,15 @@ namespace UserApi.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public IActionResult GetUserProfile()
         {
-            var name = User.FindFirst(JwtRegisteredClaimNames.Name)?.Value;
-            var email = User.FindFirst(JwtRegisteredClaimNames.Email)?.Value?? User.FindFirst("email")?.Value ?? User.FindFirst(ClaimTypes.Email)?.Value;
+            try
+            {
+                var name = User.FindFirst(JwtRegisteredClaimNames.Name)?.Value;
+                var email = User.FindFirst(JwtRegisteredClaimNames.Email)?.Value ?? User.FindFirst("email")?.Value ?? User.FindFirst(ClaimTypes.Email)?.Value;
 
-            return Ok(new { name, email });
+                return Ok(new { name, email });
+            }
+            catch (Exception ex)
+            { throw new BadRequestException("Bad Request"); }
         }
         [HttpPatch("UpdateProfile")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
@@ -44,7 +50,7 @@ namespace UserApi.Controllers
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new BadRequestException("Bad Request");
             }
             return Ok();
         }

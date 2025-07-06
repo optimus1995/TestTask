@@ -1,6 +1,7 @@
 ﻿using Applicatiom.Request;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using UserDomain;
 
 
 namespace UserAuthApi.Controllers
@@ -25,7 +26,7 @@ namespace UserAuthApi.Controllers
                 return Ok(result);
             }
             catch (Exception ex)
-            { throw ex; }
+            { throw new BadRequestException("Bad Request"); }
             
             
             }
@@ -33,9 +34,16 @@ namespace UserAuthApi.Controllers
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginRequest request)
         {
-            var result = _mediatr.Send(request);
-            return Ok(result);
-        }
+            try {
+                if(request  is null)
+                    throw new BadRequestException("Null data inserted");
+                var result = _mediatr.Send(request);
+                return Ok(result);
+            } 
+            catch (Exception ex)
+            { throw new BadRequestException("Bad Request"); }
+            }
+
 
     }
 }

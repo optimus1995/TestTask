@@ -3,6 +3,7 @@ using Applicatiom.Response;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.JsonWebTokens;
+using UserDomain;
 using UserDomain.Entities;
 using UserDomain.Interface;
 public class UpdateUserDetailHandler : IRequestHandler<UpdateUserDetailRequest, UpdateUserDetailResponse>
@@ -20,13 +21,8 @@ public class UpdateUserDetailHandler : IRequestHandler<UpdateUserDetailRequest, 
     {
         
         var existing = await _repo.GetByEmailAsync(request.Email);
-        if (existing==0)
-
-            return new UpdateUserDetailResponse
-            {
-                response = "No Record Exist according to this email"
-            };
-
+        if (existing == null||existing==0)
+            throw new NotFoundException("No user found with this email");
         var user = new User
         {Email=request.Email,
             Name = request.Name,
